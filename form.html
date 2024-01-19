@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #formContainer {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #dataPage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #dataList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #dataList li {
+      margin-bottom: 8px;
+    }
+
+    .form-field {
+      margin-bottom: 16px;
+    }
+
+    .data-field {
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="formContainer" class="myform">
+    <h1>Online Form</h1>
+
+    <form id="onlineForm">
+      <div class="form-field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-field">
+        <label for="vorname">Vorname:</label>
+        <input type="text" id="vorname" name="vorname" required>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-field">
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse" required>
+      </div>
+
+      <div class="form-field">
+        <label for="postleitzahl">Postleitzahl:</label>
+        <input type="text" id="postleitzahl" name="postleitzahl" required>
+      </div>
+
+      <div class="form-field">
+        <input type="checkbox" id="datenschutzerklaerung" name="datenschutzerklaerung" required>
+        <label for="datenschutzerklaerung" required>Datenschutzerklärung</label>
+    </div>
+
+      <button id="submit-btn" type="button" onclick="submitForm()">Submit</button>
+    </form>
+  </div>
+
+  <div id="dataPage" class="submitted-data">
+    <h2>Submitted Data</h2>
+    <ul id="dataList"></ul>
+  </div>
+
+  <script>
+    function submitForm() {
+      // Recupera i valori inseriti dall'utente
+      const name = document.getElementById('name').value;
+      const vorname = document.getElementById('vorname').value;
+      const email = document.getElementById('email').value;
+      const adresse = document.getElementById('adresse').value;
+      const postleitzahl = document.getElementById('postleitzahl').value;
+
+      // Crea una stringa con i dati del form
+      const formData = `
+        <strong>Name:</strong> ${name},
+        <strong>Vorname:</strong> ${vorname},
+        <strong>Email:</strong> ${email},
+        <strong>Adresse:</strong> ${adresse},
+        <strong>Postleitzahl:</strong> ${postleitzahl}
+      `;
+
+      // Mostra la pagina dei dati
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('dataPage').style.display = 'flex';
+
+      // Aggiungi i dati alla lista
+      const dataList = document.getElementById('dataList');
+      const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <div class="data-field" id="dataName"><strong>Name: </strong>${name}</div>
+      <div class="data-field" id="dataVorname"><strong>Vorame: </strong>${vorname}</div>
+      <div class="data-field" id="dataEmail"><strong>Email: </strong>${email}</div>
+      <div class="data-field" id="dataAdresse"><strong>Adresse: </strong>${adresse}</div>
+      <div class="data-field" id="dataPostleitzahl"><strong>Name: </strong>${postleitzahl}</div>
+    `;
+    dataList.appendChild(listItem);
+
+      // Resetta i campi del form
+      document.getElementById('onlineForm').reset();
+    }
+  </script>
+
+</body>
+</html>
