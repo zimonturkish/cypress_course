@@ -29,9 +29,9 @@ Cypress.Commands.add('getTestData', (selector) => {
 })
 
 Cypress.Commands.add('getByClass', (selector) => {
-    return cy.get(`.${selector}"`)
+    return cy.get(`.${selector}`)
 })
 
 Cypress.Commands.add('getById', (selector) => {
-    return cy.get(`#${selector}"`)
+    return cy.get(`#${selector}`)
 })

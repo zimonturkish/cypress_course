@@ -11,24 +11,26 @@ describe('Forms, Buttons & Checkbox', () => {
 
     // Load the form
     cy.visit('http://localhost:8080/form.html')
-    cy.get('[class="myform"]').should('be.visible')
+    //cy.get('[class="myform"]').should('be.visible')
+    cy.getByClass('myform').should('be.visible')  
 
     // Fill the form
-    cy.get('[id="name"]').type(name)
-    cy.get('#vorname').type(vorname)
-    cy.get('#email').type(email)
-    cy.get('#adresse').type(adresse)
-    cy.get('#postleitzahl').type(postleitzahl)
-    cy.get('#datenschutzerklaerung').click()
-    cy.get('#submit-btn').click() 
+    //cy.get('#name').type(name)
+    cy.getById('name').type(name)
+    cy.getById('vorname').type(vorname)
+    cy.getById('email').type(email)
+    cy.getById('adresse').type(adresse)
+    cy.getById('postleitzahl').type(postleitzahl)
+    cy.getById('datenschutzerklaerung').click()
+    cy.getById('submit-btn').click() 
 
     // Assert Form Details
-    cy.get('.submitted-data').should('be.visible')
-    cy.get('#dataName').should('contain', name)
-    cy.get('#dataVorname').should('contain', vorname)
-    cy.get('#dataEmail').should('contain', email)
-    cy.get('#dataAdresse').should('contain', adresse)
-    cy.get('#dataPostleitzahl').should('contain', postleitzahl)
+    cy.getByClass('submitted-data').should('be.visible')
+    cy.getById('dataName').should('contain', name)
+    cy.getById('dataVorname').should('contain', vorname)
+    cy.getById('dataEmail').should('contain', email)
+    cy.getById('dataAdresse').should('contain', adresse)
+    cy.getById('dataPostleitzahl').should('contain', postleitzahl)
   
   })
 })
