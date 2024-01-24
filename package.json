@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --spec 'cypress/e2e/hover.cy.js' --reporter json",
+    "test": "cypress run --spec 'cypress/e2e/hover.cy.js' --reporter",
     "start-server": "http-server"
   },
   "keywords": [],
